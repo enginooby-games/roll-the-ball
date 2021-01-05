@@ -4,12 +4,16 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Physics;
 using Unity.Transforms;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private int score=0;
 
     public GameObject ballPrefab;
+    public TextMeshProUGUI scoreLabel;
+
     private Entity ballEntityPrefab;
     private EntityManager entityManager;
     private BlobAssetStore blobAssetStore;
@@ -51,6 +55,12 @@ public class GameManager : MonoBehaviour
             Value = new Unity.Mathematics.float3(0f, 5f, 0f)
         };
         entityManager.AddComponentData(newBallEntity, ballTranslationData);
+    }
+
+    public void IncreaseScore()
+    {
+        score++;
+        scoreLabel.text = "Score: " + score.ToString();
     }
 
     // Update is called once per frame

@@ -17,9 +17,10 @@ public class DeleteEntitySystem : SystemBase
     {
         EntityCommandBuffer commandBuffer = new EntityCommandBuffer(Allocator.TempJob);
 
-        Entities.WithAll<DeleteTag>().ForEach((Entity entity) =>
+        Entities.WithAll<DeleteTag>().WithoutBurst().ForEach((Entity entity) =>
         {
             commandBuffer.DestroyEntity(entity);
+            GameManager.instance.IncreaseScore();
         }).Run();
 
         commandBuffer.Playback(EntityManager);
