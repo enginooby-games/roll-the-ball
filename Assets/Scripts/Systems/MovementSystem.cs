@@ -7,6 +7,7 @@ using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 
+[AlwaysSynchronizeSystem]
 public class MovementSystem : SystemBase
 {
     protected override void OnUpdate()
