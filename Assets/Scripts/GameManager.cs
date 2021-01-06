@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
             Value = new Unity.Mathematics.float3(0f, 5f, 0f)
         };
         entityManager.AddComponentData(newBallEntity, ballTranslationData);
+
+        CameraFollow.instance.ballEntity = newBallEntity;
     }
 
     public void IncreaseScore()
