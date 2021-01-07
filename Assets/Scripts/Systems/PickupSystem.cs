@@ -32,7 +32,7 @@ public class PickupSystem : SystemBase
         {
             speedEntities = GetComponentDataFromEntity<SpeedData>(),
             entitiesToDelete = GetComponentDataFromEntity<DeleteTag>(),
-            commandBuffer = bufferSystem.CreateCommandBuffer()
+            commandBuffer = bufferSystem.CreateCommandBuffer(),
         };
 
         return triggerJob.Schedule(stepPhysicsWorld.Simulation, ref buildPhysicsWorld.PhysicsWorld, inputDeps);
@@ -53,9 +53,13 @@ public class PickupSystem : SystemBase
         {
             if(speedEntities.HasComponent(entity1))
             {
+                //commandBuffer.DestroyEntity(entity2);
+                //GameManager.instance.IncreaseScore();
                 if (entitiesToDelete.HasComponent(entity2)) return;
                 commandBuffer.AddComponent(entity2, new DeleteTag());
             }
+
+            
         }
     }
 }

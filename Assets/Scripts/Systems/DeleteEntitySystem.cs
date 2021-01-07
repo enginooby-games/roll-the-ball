@@ -15,7 +15,7 @@ public class DeleteEntitySystem : SystemBase
     }
     protected JobHandle OnUpdate(JobHandle inputDeps)
     {
-        EntityCommandBuffer commandBuffer = new EntityCommandBuffer(Allocator.TempJob);
+        EntityCommandBuffer commandBuffer = new EntityCommandBuffer(Allocator.Temp);
 
         Entities.WithAll<DeleteTag>().WithoutBurst().ForEach((Entity entity) =>
         {
